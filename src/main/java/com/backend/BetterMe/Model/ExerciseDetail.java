@@ -25,8 +25,16 @@ public class ExerciseDetail {
     @ManyToOne(optional = false)
     @JoinColumn(name = "exercise_id", nullable = false)
     private Exercise exercise;
+
+    @Column(name = "repetitions", nullable = false)
     private int repetitions;
+
+    @Column(name = "sets", nullable = false)
     private int sets;
+
+    @Column(name = "weight", nullable = false)
     private double weight;
-    private LocalDate date;
+
+//    @Column(name = "date", nullable = false)
+//    private LocalDate date;
 }

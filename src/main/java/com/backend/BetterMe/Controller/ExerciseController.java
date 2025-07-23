@@ -2,39 +2,57 @@ package com.backend.BetterMe.Controller;
 
 
 import com.backend.BetterMe.Model.Exercise;
-import com.backend.BetterMe.Repository.ExerciseRepo;
 import com.backend.BetterMe.Service.ExerciseService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/exercises")
+@Controller
+@RequestMapping("/exercises")
+@RequiredArgsConstructor
 public class ExerciseController {
-
-    public ExerciseController(ExerciseService exerciseService) {
-        this.exerciseService = exerciseService;
-    }
 
     private final ExerciseService exerciseService;
 
-    /**
-     * Create a new Exercise.
-     * @param exercise body contains name of the exercise
-     * @return saved Exercise
-     */
-    @PostMapping
-    public Exercise addExercise(@RequestBody Exercise exercise) {
-        return exerciseService.addExercise(exercise);
+    // ! @RequiredArgsConstructor conflict?
+//    public ExerciseController(ExerciseService exerciseService) {
+//        this.exerciseService = exerciseService;
+//    }
+
+    @GetMapping
+    public String showExercises(Model model) {
+        model.addAttribute("exercises", exerciseService.getAllExercises());
+        model.addAttribute("newExercise", new Exercise());
+        model.addAttribute("todayExercises", exerciseService.getTodayExercises());
+        model.addAttribute("todayCompletion", exerciseService.getTodayCompletion());
+        return "exercises";
     }
 
-    /**
-     * Retrieve all exercises.
-     * @return list of all Exercises
-     */
-    @GetMapping
-    public List<Exercise> getAllExercises() {
-        return exerciseService.getAllExercises();
+    @PostMapping
+    public String addExercise(@ModelAttribute("newExercise") Exercise exercise) {
+        exerciseService.addExercise(exercise);
+        return "redirect:/exercises";
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteExercise(@PathVariable("id") Long id) {
+        exerciseService.deleteExercise(id);
+        return "redirect:/exercises";
+    }
+
+    @PostMapping("/{id}/addToToday")
+    public String addToToday(@PathVariable("id") Long id) {
+        exerciseService.addToTodayWorkout(id);
+        return "redirect:/exercises";
+    }
+
+    @DeleteMapping("/today/{exerciseId}")
+    public String deleteTodayExercise(@PathVariable("exerciseId") Long exerciseId) {
+        exerciseService.deleteTodayEntryByExerciseId(exerciseId);
+        return "redirect:/exercises";
     }
 }
