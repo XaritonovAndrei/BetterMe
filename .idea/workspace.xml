@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d105f54-1f62-40b9-8b01-a011aa7a61f4" name="Changes" comment="test change 2">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/easycode/codebase-v2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Controller/ExerciseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Controller/ExerciseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Model/ExerciseDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Model/ExerciseDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Service/ExerciseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Service/ExerciseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="8d105f54-1f62-40b9-8b01-a011aa7a61f4" name="Changes" comment="setting up tracker service" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -196,7 +185,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753145076169</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="setting up tracker service">
+      <option name="closed" value="true" />
+      <created>1753243141082</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1753243141082</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -218,7 +215,8 @@
     <MESSAGE value="test commit" />
     <MESSAGE value="test change" />
     <MESSAGE value="test change 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="test change 2" />
+    <MESSAGE value="setting up tracker service" />
+    <option name="LAST_COMMIT_MESSAGE" value="setting up tracker service" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
