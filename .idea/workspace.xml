@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d105f54-1f62-40b9-8b01-a011aa7a61f4" name="Changes" comment="setting up tracker service" />
+    <list default="true" id="8d105f54-1f62-40b9-8b01-a011aa7a61f4" name="Changes" comment="setting up thymeleaf">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Controller/ExerciseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Controller/ExerciseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Model/Exercise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Model/Exercise.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Model/ExerciseDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Model/ExerciseDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Model/ExerciseTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Model/ExerciseTracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Repository/ExerciseDetailRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Repository/ExerciseDetailRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Repository/ExerciseRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Repository/ExerciseRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Repository/ExerciseTrackerRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Repository/ExerciseTrackerRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Service/ExerciseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Service/ExerciseService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,8 +26,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -59,23 +71,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.BetterMeApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/backend/BetterMe&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.BetterMeApplication.executor": "Run",
+    "Application.Main.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/backend/BetterMe",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="BetterMeApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.backend.BetterMe.BetterMeApplication" />
@@ -193,7 +205,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753243141082</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="setting up thymeleaf">
+      <option name="closed" value="true" />
+      <created>1753317438790</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1753317438790</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -216,7 +236,8 @@
     <MESSAGE value="test change" />
     <MESSAGE value="test change 2" />
     <MESSAGE value="setting up tracker service" />
-    <option name="LAST_COMMIT_MESSAGE" value="setting up tracker service" />
+    <MESSAGE value="setting up thymeleaf" />
+    <option name="LAST_COMMIT_MESSAGE" value="setting up thymeleaf" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 
 /**
- * Exercises main table
+ * Exercises main table (master-list)
  */
 @Data
 @NoArgsConstructor
