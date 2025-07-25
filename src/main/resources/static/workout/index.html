@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Workout App Interface</title>
+  <style>
+    body { font-family: sans-serif; margin: 20px; }
+    section { border: 1px solid #ccc; padding: 10px; margin-bottom: 20px; border-radius: 4px; }
+    h2 { margin-top: 0; }
+    ul { list-style: none; padding: 0; }
+    li { margin-bottom: 6px; }
+    label { display: block; margin-bottom: 6px; }
+    input, select, button { margin-right: 8px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+    th, td { border: 1px solid #ccc; padding: 6px; text-align: center; }
+    th { background-color: #f4f4f4; }
+  </style>
+</head>
+
+<body>
+
+  <h1>Workout App Interface</h1>
+
+  <section id="exercises">
+    <h2>Manage Exercises</h2>
+    <ul id="exercise-list"></ul>
+    <input type="text" id="new-exercise-name" placeholder="Exercise name">
+    <button id="btn-add-exercise">Add Exercise</button>
+  </section>
+
+  <section id="recorder">
+    <h2>Record Workout</h2>
+    <label>Exercise:
+      <select id="select-exercise"></select>
+    </label>
+    <label>Reps: <input type="number" id="input-reps" min="1"></label>
+    <label>Sets: <input type="number" id="input-sets" min="1"></label>
+    <label>Weight: <input type="number" id="input-weight" step="0.1"></label>
+    <button id="btn-record">Record</button>
+  </section>
+
+  <section id="history">
+    <h2>Workout History</h2>
+    <label>Date: <input type="date" id="input-date"></label>
+    <button id="btn-refresh">Show</button>
+    <table>
+      <thead>
+        <tr><th>Exercise</th><th>Date</th><th>Reps</th><th>Sets</th><th>Weight</th></tr>
+      </thead>
+      <tbody id="history-body"></tbody>
+    </table>
+  </section>
+
+<script>
+  const exerciseListEl = document.getElementById('exercise-list');
+  const selectExercise = document.getElementById('select-exercise');
+  const historyBody = document.getElementById('history-body');
+  const inputDate = document.getElementById('input-date');
+
+  // Initialize today's date in date input
+  inputDate.value = new Date().toISOString().slice(0,10);
+
+  async function fetchExercises() {
+    const res = await fetch('/api/exercises');
+    return res.json();
+  }
+
+  async function refreshExercises() {
+    const exercises = await fetchExercises();
+    exerciseListEl.innerHTML = '';
+    selectExercise.innerHTML = '';
+    exercises.forEach(e => {
+      const li = document.createElement('li');
+      li.textContent = e.name;
+      const btnDel = document.createElement('button');
+      btnDel.textContent = 'Delete';
+      btnDel.onclick = async () => {
+        await fetch(`/api/workout/deleteExercise/${e.id}`, { method: 'DELETE' });
+        refreshExercises();
+      };
+      li.appendChild(btnDel);
+      exerciseListEl.appendChild(li);
+      const opt = document.createElement('option');
+      opt.value = e.id;
+      opt.textContent = e.name;
+      selectExercise.appendChild(opt);
+    });
+  }
+
+  document.getElementById('btn-add-exercise').onclick = async () => {
+    const name = document.getElementById('new-exercise-name').value;
+    if (!name) return;
+    await fetch('/api/workout/addExercise', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ name })
+    });
+    document.getElementById('new-exercise-name').value = '';
+    refreshExercises();
+  };
+
+  document.getElementById('btn-record').onclick = async () => {
+    const payload = {
+      exerciseId: parseInt(selectExercise.value),
+      reps: parseInt(document.getElementById('input-reps').value),
+      sets: parseInt(document.getElementById('input-sets').value),
+      weight: parseFloat(document.getElementById('input-weight').value)
+    };
+    await fetch('/api/workout/recordWorkout', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+    loadHistory();
+  };
+
+  async function loadHistory() {
+    const date = inputDate.value;
+    const res = await fetch(`/api/workout?date=${date}`);
+    const data = await res.json();
+    historyBody.innerHTML = '';
+    if (data.length === 0) {
+      const row = document.createElement('tr');
+      row.innerHTML = '<td colspan="5">No entries for this date.</td>';
+      historyBody.appendChild(row);
+    } else {
+      data.forEach(en => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${en.exercise.name}</td>
+          <td>${en.datePerformed}</td>
+          <td>${en.reps}</td>
+          <td>${en.sets}</td>
+          <td>${en.weight}</td>
+        `;
+        historyBody.appendChild(row);
+      });
+    }
+  }
+
+  document.getElementById('btn-refresh').onclick = loadHistory;
+
+  // initial load
+  refreshExercises();
+  loadHistory();
+</script>
+</body>
+</html>
+

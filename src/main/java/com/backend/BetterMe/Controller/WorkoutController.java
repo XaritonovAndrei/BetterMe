@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
-@Controller
-@RequestMapping("/workout")
+@RestController
+@RequestMapping("/api/workout")
 public class WorkoutController {
 
     private final WorkoutService workoutService;
@@ -22,49 +23,50 @@ public class WorkoutController {
         this.workoutService = workoutService;
     }
 
+    /**
+     * Get workout history for a specific date (default => today).
+     */
     @GetMapping
-    public String showWorkoutPage(
-            Model model,
+    public List<WorkoutHistory> showWorkoutPage(
             @RequestParam(value = "date", required = false)
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
             LocalDate date) {
         LocalDate targetDate = (date != null) ? date : LocalDate.now();
-        List<WorkoutHistory> entries = workoutService.getAllWorkoutByDate(targetDate);
-
-        // model attributes
-        model.addAttribute("entries", entries);
-        model.addAttribute("selectedDate", targetDate);
-        List<Exercise> exercises = workoutService.getAllExercises();
-        model.addAttribute("exercises", exercises);
-        model.addAttribute("newExercise", new Exercise());
-
-        return "workout";
+        return workoutService.getAllWorkoutByDate(targetDate);
     }
 
+    /**
+     * Add a new exercise to the master list.
+     */
     @PostMapping("/addExercise")
-    public String addExercise(@ModelAttribute("newExercise") Exercise exercise) {
-        workoutService.addExercise(exercise);
-        return "redirect:/workout";
+    public Exercise addExercise(@RequestBody Exercise exercise) {
+        return workoutService.addExercise(exercise);
     }
 
+    /**
+     * Delete an exercise from the master list.
+     */
     @DeleteMapping("/deleteExercise/{id}")
-    public String deleteExercise(@PathVariable("id") Long id) {
+    public void deleteExercise(@PathVariable("id") Long id) {
         workoutService.deleteExercise(id);
-        return "redirect:/workout";
     }
 
+    /**
+     * Record a completed workout set.
+     * Method takes JSON file with keys: exerciseId, reps, sets, weight
+     */
     @PostMapping("/recordWorkout")
-    @ResponseBody
-    public WorkoutHistory recordWorkout(
-            // date recording in service layer in recordWorkout method
-            @RequestParam Long exerciseId,
-            @RequestParam int reps,
-            @RequestParam int sets,
-            @RequestParam double weight
-    ) {
+    public WorkoutHistory recordWorkout(@RequestBody Map<String, Object> payload) {
+        Long exerciseId = ((Number) payload.get("exerciseId")).longValue();
+        int reps = ((Number) payload.get("reps")).intValue();
+        int sets = ((Number) payload.get("sets")).intValue();
+        double weight = ((Number) payload.get("weight")).doubleValue();
         return workoutService.recordWorkout(exerciseId, reps, sets, weight);
     }
 
+    /**
+     * List today's workout plan (or another specific date)
+     */
     @GetMapping("/todayWorkout")
     public List<WorkoutHistory> todayList(
             @RequestParam(required = false)
@@ -78,9 +80,10 @@ public class WorkoutController {
         return workoutService.getTodayEntries();
     }
 
-
+    /**
+     * List all workout history by arbitrary date.
+     */
     @GetMapping("/workoutByDate")
-    @ResponseBody
     public List<WorkoutHistory> listAllByDate(
             @RequestParam("date")
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
