@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d105f54-1f62-40b9-8b01-a011aa7a61f4" name="Changes" comment="test service">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Controller/WorkoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/BetterMe/Controller/WorkoutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/exercises.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/workout.html" beforeDir="false" />
-    </list>
+    <list default="true" id="8d105f54-1f62-40b9-8b01-a011aa7a61f4" name="Changes" comment="react migration" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -228,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753329444776</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="react migration">
+      <option name="closed" value="true" />
+      <created>1753424371645</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1753424371645</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -254,7 +257,8 @@
     <MESSAGE value="setting up thymeleaf" />
     <MESSAGE value="added history service and  thymeleaf template" />
     <MESSAGE value="test service" />
-    <option name="LAST_COMMIT_MESSAGE" value="test service" />
+    <MESSAGE value="react migration" />
+    <option name="LAST_COMMIT_MESSAGE" value="react migration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
